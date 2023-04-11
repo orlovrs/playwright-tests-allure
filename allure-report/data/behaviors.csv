@@ -1,8 +1,0 @@
-"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
-"Tasks","Creating task","User can see new task in the end of a list","0","0","2","0","0"
-"Tasks","Creating task","Task fields limitation","0","0","11","0","0"
-"Tasks","Statuses transitions","User sees UI changes when task paused","0","0","2","0","0"
-"Tasks","Apperance","User sees 2 sections on the page","0","0","1","0","0"
-"Tasks","Statuses transitions","User can switch beetwen various statuses","0","0","12","0","0"
-"Tasks","Deleting task","User can delete task from any place of the list","0","0","4","0","0"
-"Tasks","Statuses transitions","User sees UI changes when task started","0","0","2","0","0"

@@ -7,7 +7,9 @@
     "clear": "rimraf allure-results && rimraf allure-report",
     "allure:generate": "allure generate --clean",
     "allure:combine": "node ./node_modules/allure-single-html-file-js/combine.js ./allure-report",
-    "report": "npm run clear && npm run allure:generate && npm run allure:combine"
+    "pretest": "npm run clear",
+    "test": "npx playwright test",
+    "report": "npm run allure:generate && npm run allure:combine"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,7 @@
   "homepage": "https://github.com/orlovrs/playwright-tests-allure#readme",
   "dependencies": {
     "allure-single-html-file-js": "^0.0.4",
-    "playwright": "^1.32.2",
+    "playwright": "^1.32.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
