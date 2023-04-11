@@ -8,7 +8,7 @@
     "allure:generate": "allure generate --clean",
     "allure:combine": "node ./node_modules/allure-single-html-file-js/combine.js ./allure-report",
     "pretest": "npm run clear",
-    "test": "npx playwright test",
+    "test": "export CI=false && npx playwright test",
     "report": "npm run allure:generate && npm run allure:combine"
   },
   "repository": {
