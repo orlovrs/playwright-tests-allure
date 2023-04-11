@@ -9,16 +9,15 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: 18
-      - name: Install dependencies
-        run: npm i
+          node-version: "18.x"
+      - uses: microsoft/playwright-github-action@v1
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npm test
+      - name: Install dependencies and run tests
+        run: npm install && npx playwright test
       - name: Generate reports
         run: npm run report
       - uses: actions/upload-artifact@v3
