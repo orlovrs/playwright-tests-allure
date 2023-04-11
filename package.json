@@ -1,0 +1,34 @@
+{
+  "name": "playwright-tests-allure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf allure-results && rimraf allure-report",
+    "allure:generate": "allure generate --clean",
+    "allure:combine": "node ./node_modules/allure-single-html-file-js/combine.js ./allure-report",
+    "report": "npm run clear && npm run allure:generate && npm run allure:combine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orlovrs/playwright-tests-allure.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orlovrs/playwright-tests-allure/issues"
+  },
+  "homepage": "https://github.com/orlovrs/playwright-tests-allure#readme",
+  "dependencies": {
+    "allure-single-html-file-js": "^0.0.4",
+    "playwright": "^1.32.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.32.3",
+    "allure-commandline": "^2.21.0",
+    "allure-playwright": "^2.1.0",
+    "rimraf": "^5.0.0"
+  }
+}
