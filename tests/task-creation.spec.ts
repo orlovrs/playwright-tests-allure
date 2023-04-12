@@ -18,9 +18,7 @@ export default class DateForPicker {
 
     forPicker() {
         if (this.isEmpty) return this.empty();
-        return process.env.CI ?
-            `${this.month}.${this.day}.${this.year}` :
-            `${this.day}.${this.month}.${this.year}`;
+        return `${this.day}.${this.month}.${this.year}`;
     }
     
     forTask() {
