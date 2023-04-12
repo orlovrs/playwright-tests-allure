@@ -22,12 +22,9 @@ jobs:
       - name: Generate report
         run: npm run report
         if: always()
-      - name: Show files
-        run: ls -aR allure-report
-        if: always()
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: report.html
+          name: report
           path: allure-report/complete.html
           retention-days: 30

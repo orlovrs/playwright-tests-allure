@@ -9,8 +9,7 @@ export default class DateForPicker {
     isEmpty = true;
 
     constructor(offset: number = 0, isEmpty: boolean = false) {
-        var date = new Date();
-        date.setDate(date.getDate() + offset);
+        var date = new Date(new Date().getTime() + (offset * 24 * 60 * 60 * 1000));
         this.isEmpty = isEmpty;
         this.day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate().toString();
         this.month = date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1).toString();
