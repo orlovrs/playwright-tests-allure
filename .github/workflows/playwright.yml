@@ -23,6 +23,8 @@ jobs:
         run: npm test
       - name: Generate report
         run: npm run report
+      - name: Show files
+        run: ls -aR allure-report
       - uses: actions/upload-artifact@v3
         if: always()
         with:
