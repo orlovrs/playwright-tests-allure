@@ -9,14 +9,11 @@ export default class DateForPicker {
     isEmpty = true;
 
     constructor(offset: number = 0, isEmpty: boolean = false) {
-        var date = new Date();
-        var now_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
-
-        var date = new Date(new Date(now_utc).getTime() + (offset * 24 * 60 * 60 * 1000));
+        var date = new Date(new Date().getTime() + (offset * 24 * 60 * 60 * 1000));
         this.isEmpty = isEmpty;
-        this.day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate().toString();
-        this.month = date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1).toString();
-        this.year = date.getFullYear().toString();
+        this.day = date.getUTCDate() < 10 ? '0' + date.getUTCDate() : date.getUTCDate().toString();
+        this.month = date.getUTCMonth() < 9 ? '0' + (date.getUTCMonth() + 1) : (date.getUTCMonth() + 1).toString();
+        this.year = date.getUTCFullYear().toString();
     }
 
     forPicker() {
