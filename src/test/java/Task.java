@@ -3,10 +3,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Task {
     WebDriver driver;
@@ -23,23 +20,26 @@ public class Task {
         this.isEmpty = isEmpty;
 
         if (!this.isEmpty) {
-            Date dt = new Date();
-            this.date = LocalDateTime.from(dt.toInstant()).plusDays(offset);
+            this.date = LocalDateTime.now().plusDays(offset);
         }
     }
 
     public String forPicker() {
         if (this.date == null) return "";
-
-        Format formatter = new SimpleDateFormat("dd.MM.yyyy");
-        return formatter.format(this.date);
+        return String.format("%s.%s.%s",
+                date.getDayOfMonth() < 10 ? "0" + date.getDayOfMonth() : date.getDayOfMonth(),
+                date.getMonth().ordinal() < 9 ? "0" + (date.getMonth().ordinal() + 1) : (date.getMonth().ordinal() + 1),
+                date.getYear()
+        );
     }
 
     public String forCard() {
-        if (this.date == null) return "";
-
-        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        return formatter.format(this.date);
+        if (date == null) return "";
+        return String.format("%s-%s-%s",
+                date.getYear(),
+                date.getMonth().ordinal() < 9 ? "0" + (date.getMonth().ordinal() + 1) : (date.getMonth().ordinal() + 1),
+                date.getDayOfMonth() < 10 ? "0" + date.getDayOfMonth() : date.getDayOfMonth()
+        );
     }
 
     @Step("Creating a task")
@@ -55,7 +55,7 @@ public class Task {
         String xpath = String.format(
                 "//div[contains(text(),'%s')]//..//button[@class='btn btn-danger']",
                 name
-                );
+        );
         this.driver.findElement(By.xpath(xpath)).click();
     }
 }
