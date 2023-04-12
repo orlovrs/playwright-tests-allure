@@ -24,7 +24,9 @@ export default class DateForPicker {
     
     forTask() {
         if (this.isEmpty) return this.empty();
-        return `${this.year}-${this.month}-${this.day}`;
+        return process.env.IS_LOCAL ?
+            `${this.year}-${this.month}-${this.day}`:
+            `${this.year}-${this.day}-${this.month}`;
     }
 
     empty() {

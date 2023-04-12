@@ -13,15 +13,19 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Show env
+        run: env
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install
       - name: Run Playwright tests
-        run: npx playwright test --reporter=line,allure-playwright
+        run: npm test
+      - name: Generate report
+        run: npm run report
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-report
-          path: playwright-report/
+          name: report.html
+          path: allure-report/complete.html
           retention-days: 30

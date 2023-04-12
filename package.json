@@ -8,7 +8,7 @@
     "allure:generate": "allure generate --clean",
     "allure:combine": "node ./node_modules/allure-single-html-file-js/combine.js ./allure-report",
     "pretest": "npm run clear",
-    "test": "npx playwright test",
+    "test": "npx playwright test --reporter=line,allure-playwright",
     "report": "npm run allure:generate && npm run allure:combine"
   },
   "repository": {
@@ -23,11 +23,13 @@
   },
   "homepage": "https://github.com/orlovrs/playwright-tests-allure#readme",
   "dependencies": {
+    "allure-single-html-file-js": "^0.0.4",
     "playwright": "^1.32.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.32.3",
+    "allure-commandline": "^2.21.0",
     "allure-playwright": "^2.1.0",
     "rimraf": "^5.0.0"
   }
