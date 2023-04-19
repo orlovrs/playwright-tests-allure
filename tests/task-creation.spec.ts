@@ -18,7 +18,7 @@ export default class DateForPicker {
 
     forPicker() {
         if (this.isEmpty) return this.empty();
-        return `${this.day}.${this.month}.${this.year}`;
+        return `${this.year}-${this.month}-${this.day}`;
     }
     
     forTask() {
@@ -66,7 +66,7 @@ dates.forEach(date => {
     test(`No limitations for date provided ("${date.forPicker()}")`, async ({ page }) => {
         allure.story("Task fields limitation");
         await page.goto('/time-tracker');
-        await page.locator('#plannedDate').type(date.forPicker() || '');
+        await page.locator('#plannedDate').fill(date.forPicker() || '');
         await page.getByRole('button', {name: 'Create Task'}).click();
 
         await expect(page.locator("div.card .card-body")).toContainText(`Planned Date: ${date.forTask()}`);
