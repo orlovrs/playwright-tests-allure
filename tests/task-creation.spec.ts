@@ -18,16 +18,12 @@ export default class DateForPicker {
 
     forPicker() {
         if (this.isEmpty) return this.empty();
-        return process.env.CI ?
-            `${this.year}.${this.month}.${this.day}` :
-            `${this.day}.${this.month}.${this.year}`;
+        return `${this.day}.${this.month}.${this.year}`;
     }
     
     forTask() {
         if (this.isEmpty) return this.empty();
-        return process.env.CI ?
-            `${this.year}-${this.day}-${this.month}` :
-            `${this.year}-${this.month}-${this.day}`;
+        return `${this.year}-${this.month}-${this.day}`;
     }
 
     empty() {
